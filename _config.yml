@@ -5,7 +5,7 @@ description: 'Yu Wang - a full stack developer and UX designer that currently st
 url: 'http://yu-w.github.io/'
 baseurl: '/'
 # google_analytics: 'UA-XXXXXX-X'
-disqus_shortname: 'yu'
+disqus_shortname: 'yuw'
 
 author:
   name: 'Yu Wang'
