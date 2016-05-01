@@ -2,8 +2,8 @@
 title: Yu Wang
 moto: 'Code & Design'
 description: 'Yu Wang - a full stack developer and UX designer that currently study abroad in UIUC.'
-url: 'http://joshgerdes.com/jekyll-uno'
-baseurl: '/'
+url: 'http://yu-w.github.io'
+baseurl: ''
 # google_analytics: 'UA-XXXXXX-X'
 disqus_shortname: 'yu'
 
