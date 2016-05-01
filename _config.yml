@@ -1,8 +1,9 @@
 # Site settings
 title: Yu Wang
-description: 'Yu Wang - a software engineer and designer'
+moto: 'Code & Design'
+description: 'Yu Wang - a full stack developer and UX designer that currently study abroad in UIUC.'
 url: 'http://joshgerdes.com/jekyll-uno'
-baseurl: '/yu/'
+baseurl: '/'
 # google_analytics: 'UA-XXXXXX-X'
 disqus_shortname: 'yu'
 
