@@ -1102,11 +1102,8 @@ pre {
 	max-width: 800px;
 	margin-left: 30%; }
 
-/* Change from
-	margin: 0 10%;
-	*/
 .content-wrapper__inner {
-	margin: 0;
+	margin: 0 10%;
 	padding: 50px 0; }
 
 .footer {
