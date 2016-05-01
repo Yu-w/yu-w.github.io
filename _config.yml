@@ -2,7 +2,7 @@
 title: Yu Wang
 moto: 'Code & Design'
 description: 'Yu Wang - a full stack developer and UX designer that currently study abroad in UIUC.'
-url: 'http://yu-w.github.io/'
+url: 'http://yu-w.github.io'
 baseurl: '/'
 # google_analytics: 'UA-XXXXXX-X'
 disqus_shortname: 'yuw'
@@ -11,7 +11,7 @@ author:
   name: 'Yu Wang'
   email: wangyu2165@gmail.com
   facebook_username: wangyu2165
-  github_username: yuwang17
+  github_username: Yu-w
   linkedin_username: wangyu2165
 
 defaults:
