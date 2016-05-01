@@ -5,13 +5,15 @@ categories: [Swift]
 tags: [Swift, Haskell, Functional Programming]
 ---
 ### Monad? Monad?!
-Monad has always been a mysterious thing when programmer learning Functional Programming language like Haskell or OCaml. Monad itself is such meaningless work, so people like to use metaphor to describe monad. Some people often say monad is a burrito, some describe monad as Voldemort (nobody wish to mention its name). I'd like to refer monad as a type of box, in which it can wrap something inside normally and also can be unboxed(unwrapped) in certain way. It is a typesafe way of chaining operations together like a railroad.
+**Monad** has always been a mysterious thing when programmer learning Functional Programming language like Haskell or OCaml. Monad itself is such meaningless work, so people like to use metaphor to describe monad. Some people often say monad is a burrito, some describe monad as Voldemort (nobody wish to mention its name). I'd like to refer monad as a type of box, in which it can wrap something inside normally and also can be unboxed(unwrapped) in certain way. It is a typesafe way of chaining operations together like a railroad.
 
-Alright, so what is a monad?
+Alright, so what is a **monad**?
 
 > "A monad is just a monoid in the category of endofunctors" --StackOverflow
 
-Well, that's still too vague in every aspect for us to understand. According to Haskell:
+Well, that's still too vague in every aspect for us to understand.
+
+**Monad** is simple but it just coincidentally got a scary name. It is just a special type that has two functions. According to Haskell:
 
 > A monad is a datatype that has two operations: `>>=` (aka bind) and `return` (aka unit).
 

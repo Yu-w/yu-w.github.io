@@ -58,3 +58,15 @@ pre.highlight code,
 .lightgray-text {
     color: #777777
 }
+
+blockquote {
+    padding: 0.5em 0;
+    padding-left: 0.9em;
+    background: #f7f7f7;
+    font-style: normal;
+    font-size: 0.9em;
+    text-align: left;
+    border-left-width: medium;
+    border-left-style: solid;
+    border-left-color: #999
+}
