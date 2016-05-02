@@ -129,4 +129,14 @@ nil
 Just think how much line of code would *Imperative Programming* would have. Also, in *Functional Programming*, the input matches the output; thus, bug has less chance to take place.
 
 
+---
+
+#### Reference
+
+> [Functors, Applicatives, And Monads In Pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html) by [Aditya Bhargava](https://twitter.com/_egonschiele)
+>
+> [Monads are burritos](http://chrisdone.com/posts/monads-are-burritos) by [Chris Done](http://chrisdone.com)
+
+
+
 [monad_bind_img]: https://www.uraimo.com/imgs/bind.png
