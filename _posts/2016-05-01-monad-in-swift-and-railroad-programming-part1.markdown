@@ -72,7 +72,7 @@ Therefore, don't be surprised, `Array` is also a monad because it has `flatMap` 
 
 In iOS development community, most people who use Objective-C familiar with `performanceSelector:`, but not many people know `map`, `flatMap`, `filter`, or `reduce` in Swift, which are the functional features that makes Swift so fascinating and beautiful.
 
-That's take a closer look at how `Optional` and `flatMap` are defined:
+Let's take a closer look at how `Optional` and `flatMap` are defined:
 
 ```swift
 enum Optional<Wrapped> {
@@ -80,7 +80,7 @@ enum Optional<Wrapped> {
     case Some(Wrapped)
 }
 ```
-The codes explain everything I believe. Maybe few `init:` would make the code more comprehensive, but not discuss for here.
+An optional type can be either contains `Some` value or `None`. Maybe few `init:` would make the code more comprehensive, but not discuss for here.
 
 ```swift
 extension Optional {
