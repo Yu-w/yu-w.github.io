@@ -92,7 +92,7 @@ extension Optional {
                 return nil
 }
 ```
-As you can see, it is just syntactic sugar as the `>>=` in Haskell above. If there's something in the optional then bind it to another optional (another monad). If none, then return none.
+As you can see, it is just syntactic sugar as the `>>=` in Haskell seen above. If there's something wrapped in current optional, then bind it to another optional (another monad). If none, then return none (still another monad, remember `.None` is also an `Optional`).
 
 Also, we can define the same operator `>>=` (aka bind) as Haskell.
 
