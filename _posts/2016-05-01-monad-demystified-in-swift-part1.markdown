@@ -45,30 +45,32 @@ return x = Just x       -- Wraps value x, returning a value of type (Maybe a)
 An example illustrating the use of `Maybe` in looking up certain pair in a dictionary:
 
 ```python
-ghci> let dictionary = [(1, "one"), (2, "two"), (3, "three"), (4, "four")]
-ghci> lookup 1 dictionary
+ghci> let dict = [(1, "one"), (2, "two"), (3, "three"), (4, "four")]
+ghci> lookup 1 dict
 Just "one"
-ghci> lookup 5 dictionary
+ghci> lookup 5 dict
 Nothing
 ```
 
 ### Monad in Swift
 
-As reading through, sophisticated Swift developer should find these quiet familiar as we're actually dealing with `Maybe Monad` everyday when we're writing `Optional`.
+As reading through, sophisticated Swift developers should find these look quiet familiar. Actually, we're dealing with `Maybe Monad` everyday when writing `Optional`.
 
 ```swift
-1> let dictionary = [1: "one", 2: "two", 3: "three", 4: "four"]
-2> print(dictionary[1])
+1> let dict = [1: "one", 2: "two", 3: "three", 4: "four"]
+2> print(dict[1])
 Optional("one")
-3> print(dictionary[5])
+3> print(dict[5])
 nil
 ```
 
-You may wonder where's `>>=` (bind) in Swift? Actually it just got a different name, called `flatMap`. So here's my short explanation of monad in Swift.
+You can find how similar between these two blocks of codes.
+
+You may wonder where's `>>=` (aka bind)? Actually it just got a different name in Swift, called `flatMap`. So here's my short explanation of monad in Swift.
 
 > In Swift, any type that can be `flatMap` over is a **monad**.
 
-Therefore, don't be surprised, `Array` is also a monad because it has `flatMap` defined. `Optional` is a monad. `RACSignal` gotten from *ReactiveCocoa* or `Observable` from *RxSwift* are monads. `Result` pulled from *Alamofire* is a monad. And even `Promise` in *PromiseKit* or in *Javascript* is also a monad ...
+So, don't be surprised, if you ever have used `flatMap` on arrays, `Array` is also a monad since it can be binded. `Optional` is a monad. `RACSignal` gotten from *ReactiveCocoa* or `Observable` from *RxSwift* are monads. `Result` pulled from *Alamofire* is a monad. And even `Promise` in *PromiseKit* or in *Javascript* is also a monad ...
 
 In iOS development community, most people who use Objective-C familiar with `performanceSelector:`, but not many people know `map`, `flatMap`, `filter`, or `reduce` in Swift, which are the functional features that makes Swift so fascinating and beautiful.
 
@@ -80,7 +82,7 @@ enum Optional<Wrapped> {
     case Some(Wrapped)
 }
 ```
-An optional type can be either contains `Some` value or `None`. Maybe few `init:` would make the code more comprehensive, but not discuss for here.
+An optional type can be either wrap `Some` value or `None`. Maybe few `init:` would make the code more comprehensive, but not discuss for now.
 
 ```swift
 extension Optional {
@@ -94,17 +96,17 @@ extension Optional {
     }
 }
 ```
-As you can see, it is just syntactic sugar as the `>>=` in Haskell seen above. If there's something wrapped in current optional, then bind it to another optional (another monad). If none, then return none (still another monad, remember `.None` is also an `Optional`).
+Obviously, it is simply syntactic sugar as the bind function `>>=` in Haskell seen above. If there's something wrapped in current optional, then bind it to another optional (another monad). If none, then return none (still another monad, remember `.None` is also an `Optional`).
 
-Also, we can define the same operator `>>=` (aka bind) as in Haskell.
+Therefore, why not define the same operator `>>=` (aka bind) as in Haskell.
 
 ```swift
-infix operator >>= { associativity left }
+infix operator >>= { associativity left } // Operator overloading in Swift
 func >>=<T, U>(a: T?, f: T -> U?) -> U? {
     return a.flatMap(f)
 }
 ```
-Here, I define a new function that takes an `Int` and divides three, then return `Optional<Int>`. Return the computed result if it is still an integer after division; otherwise return nil.
+Here, I define a new function that takes an `Int` and divides it by three, then returns an `Optional<Int>`. Return the computed result if it is still an integer after division; otherwise return nil.
 
 ```swift
 func divideThree(a: Int) -> Int? {
@@ -126,7 +128,7 @@ Optional(1)
 nil
 ```
 
-Just think how much line of code would *Imperative Programming* would have. Also, in *Functional Programming*, the input matches the output; thus, bug has less chance to take place.
+Just think how much line of code *Imperative Programming* would have. On the other hand, in *Functional Programming*, the input matches the output; thus, less chance of causing bugs while enjoying clean codes.
 
 
 ---
