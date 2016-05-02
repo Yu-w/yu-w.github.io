@@ -120,7 +120,7 @@ print(Optional(9) >>= divideThree >>= divideThree)
 print(Optional(9) >>= divideThree >>= divideThree >>= divideThree)
 ```
 
-```ruby
+```
 Optional(3)
 Optional(1)
 nil
@@ -133,9 +133,11 @@ Just think how much line of code would *Imperative Programming* would have. Also
 
 #### Reference
 
-> [Functors, Applicatives, And Monads In Pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html) by [Aditya Bhargava](https://twitter.com/_egonschiele)
+> [Functors, Applicatives, And Monads In Pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html) by Aditya Bhargava
 >
-> [Monads are burritos](http://chrisdone.com/posts/monads-are-burritos) by [Chris Done](http://chrisdone.com)
+> [Monads are burritos](http://chrisdone.com/posts/monads-are-burritos) by Chris Done
+>
+> [The Culmination: Part I](https://nomothetis.svbtle.com/the-culmination-i) by Alexandros Salazar
 
 
 
