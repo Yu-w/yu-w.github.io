@@ -1,5 +1,5 @@
 ---
-title:  "Moand in Swift and Railroad Programming: Part I"
+title:  "Monad in Swift and Railroad Programming: Part I"
 date:   2016-05-01 14:48:23
 categories: [Swift]
 tags: [Swift, Haskell, Functional Programming]
@@ -68,7 +68,7 @@ You may wonder where's `>>=` (bind) in Swift? Actually it just got a different n
 
 > In Swift, any type that can be `flatMap` over is a **monad**.
 
-Therefore, `Array` is a monad because it also have `flatMap` defined. `Optional` is a monad as mentioned above. `Signal` gotten from *ReactiveCocoa* or *RxSwift* is a monad. `Result` pulled from *Alamofire* is a monad. And even `Promise` in *PromiseKit* or in *Javascript* is also a monad.
+Therefore, don't be surprised, `Array` is also a monad because it has `flatMap` defined. `Optional` is a monad. `RACSignal` gotten from *ReactiveCocoa* or `Observable` from *RxSwift* are monads. `Result` pulled from *Alamofire* is a monad. And even `Promise` in *PromiseKit* or in *Javascript* is also a monad ...
 
 In iOS development community, most people who use Objective-C familiar with `performanceSelector:`, but not many people know `map`, `flatMap`, `filter`, or `reduce` in Swift, which are the functional features that makes Swift so fascinating and beautiful.
 
