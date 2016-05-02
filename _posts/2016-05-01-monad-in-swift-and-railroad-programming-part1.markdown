@@ -1,5 +1,5 @@
 ---
-title:  "Moand in Swift and Railroad Programming"
+title:  "Moand in Swift and Railroad Programming: Part I"
 date:   2016-05-01 14:48:23
 categories: [Swift]
 tags: [Swift, Haskell, Functional Programming]
@@ -34,7 +34,7 @@ Nothing  >>= _  =  Nothing    -- A failed computation returns Nothing
 ```
 `>>=` (bind) takes a monad, unboxing it and then transforming it into another Maybe Monad which is the main key of chaining.
 
-![alt text][bind_img]
+![alt text][monad_bind_img]
 
 ```haskell
 return :: a -> Maybe a
@@ -54,7 +54,7 @@ Nothing
 
 ### Monad in Swift
 
-As reading through, sophisticated Swift developer should find these quiet familiar as we're actually dealing with `Maybe Monad` everyday when we're writing `optionals`.
+As reading through, sophisticated Swift developer should find these quiet familiar as we're actually dealing with `Maybe Monad` everyday when we're writing `Optional`.
 
 ```swift
 1> let dictionary = [1: "one", 2: "two", 3: "three", 4: "four"]
@@ -64,8 +64,67 @@ Optional("one")
 nil
 ```
 
-You may wonder where's `>>=` (bind) in Swift? Actually it just got a different name, called `flatMap`. Thus, *in Swift, anything that can be `flatMap` over is a **monad**.*
+You may wonder where's `>>=` (bind) in Swift? Actually it just got a different name, called `flatMap`. So here's my short explanation of monad in Swift.
+
+> In Swift, any type that can be `flatMap` over is a **monad**.
+
+Therefore, `Array` is a monad because it also have `flatMap` defined. `Optional` is a monad as mentioned above. `Signal` gotten from *ReactiveCocoa* or *RxSwift* is a monad. `Result` pulled from *Alamofire* is a monad. And even `Promise` in *PromiseKit* or in *Javascript* is also a monad.
 
 In iOS development community, most people who use Objective-C familiar with `performanceSelector:`, but not many people know `map`, `flatMap`, `filter`, or `reduce` in Swift, which are the functional features that makes Swift so fascinating and beautiful.
 
-[bind_img]:      http://yu-w.github.io/images/post_images/monad_bind.png
+That's take a closer look at how `Optional` and `flatMap` are defined:
+
+```swift
+enum Optional<Wrapped> {
+    case None
+    case Some(Wrapped)
+}
+```
+The codes explain everything I believe. Maybe few `init:` would make the code more comprehensive, but not discuss for here.
+
+```swift
+extension Optional {
+    public func flatMap<U>(@noescape f: Wrapped -> U?) -> U? {
+        switch self {
+            case .Some(let x):
+                return f(x)
+            case .None:
+                return nil
+}
+```
+As you can see, it is just syntactic sugar as the `>>=` in Haskell above. If there's something in the optional then bind it to another optional (another monad). If none, then return none.
+
+Also, we can define the same operator `>>=` (aka bind) as Haskell.
+
+```swift
+infix operator >>= { associativity left }
+func >>=<T, U>(a: T?, f: T -> U?) -> U? {
+    return a.flatMap(f)
+}
+```
+Here, I define a new function that takes an `Int` divides three, then return `Optional<Int>`. Return the computed result if the result is still an integer after division; otherwise return nil.
+
+```swift
+func divideThree(a: Int) -> Int? {
+    return a % 3 == 0 ? a / 3 : nil
+}
+```
+
+Chain the function three times and check the printed values.
+
+```swift
+print(Optional(9) >>= divideThree)
+print(Optional(9) >>= divideThree >>= divideThree)
+print(Optional(9) >>= divideThree >>= divideThree >>= divideThree)
+```
+
+```ruby
+Optional(3)
+Optional(1)
+nil
+```
+
+Just think how much line of code would *Imperative Programming* would have. Also, in *Functional Programming*, the input matches the output; thus, bug would has lesser chance to take place.
+
+
+[monad_bind_img]: https://www.uraimo.com/imgs/bind.png
