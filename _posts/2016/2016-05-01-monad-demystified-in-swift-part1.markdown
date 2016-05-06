@@ -4,7 +4,7 @@ date:   2016-05-01 14:48:23
 categories: [Swift]
 tags: [Swift, Haskell, Functional Programming]
 ---
-**Monad** has always been a mysterious thing when programmer learning Functional Programming languages like Haskell and OCaml. Monad itself is such a meaningless word, so people like to use metaphors to describe monads. Some people often say monad is a burrito, some may describe monad as Voldemort (nobody wish to mention its name). I'd like to refer monad as *a type* of box, in which it can wrap something inside and it also can be unboxed (unwrapped) in certain ways. In general, monad is a type-safe and trouble-free way of chaining operations together like a railroad (aka smarter way of programming).
+**Monad** has always been a mysterious thing when programmer learning Functional Programming languages like Haskell and OCaml. Monad itself is such a meaningless word, so people like to use metaphors to describe monads. Some people often say monad is a burrito, some may describe monad as Voldemort (nobody wish to mention its name). I'd like to refer monad as *a type of box or container*, in which it can wrap something inside and it also can be unboxed (unwrapped) in certain ways. In general, monad is a type-safe and trouble-free way of chaining operations together like a railroad (aka smarter way of programming).
 
 ### Monad? Monad?!
 Alright, so what is a **monad**?
@@ -34,7 +34,7 @@ Nothing  >>= _  =  Nothing    -- A failed computation returns Nothing
 ```
 `>>=` (bind) takes a monad, unboxing it and then transforming it into another Maybe Monad which is the main idea of chaining.
 
-![alt text][monad_bind_img]
+![Monad bind][monad_bind_img]
 
 ```haskell
 return :: a -> Maybe a
@@ -127,6 +127,8 @@ Optional(3)
 Optional(1)
 nil
 ```
+
+Instead of checking the value is `Int` every time before applying `divideThree`, *functional programming* allows you do everything at once. If any operation fail in the middle, the result would guarantee to be nil at the end.
 
 Just think how much line of code *Imperative Programming* would have. On the other hand, in *Functional Programming*, the input matches the output; thus, less chance of causing bugs while enjoying clean codes.
 
