@@ -12,7 +12,7 @@ I would say functional programming is a way of thinking
 
 > A way of thinking mathematically that takes everything in terms of functions, inputs match outputs, and keep all states immutable in order to be thread-safe and improve runtime efficiency.
 
-In practice, it is easy to come cross this situation when doing multiple network request. (Many of my iOS developer friends are still writing their codes in this way)
+In practice, it is easy to come cross this situation when doing network request. (I've seen many iOS developers are still writing their codes in such way)
 
 ```swift
 func fetchUserAvatar(params: String, succuess: UIImage -> Void, failure: NSError -> Void) {
@@ -35,21 +35,21 @@ func fetchUserAvatar(params: String, succuess: UIImage -> Void, failure: NSError
 }
 ```
 
-**Callback Hell** is just a poor design that drive programmer to the buggy hell.
+**Callback Hell** is a poor design that drive often programmer to the buggy hell.
 
 ![Callback Hell][callback_hell_joke]
 
-This can be part of the reason why nowadays programmer come up many different programming paradigms to solve this issue, making the code condense, clean, and safer. Especially, framework like [ReactiveCocoa][ReactiveCocoa_link], [PromiseKit][PromiseKit_link], and [RxSwift][RxSwift_link] has became increasingly popular, and the concept and functional and reactive programming start to pop out in the vision of programmers.
+This can be part of the reason why nowadays programmers come up many different programming paradigms to solve this issue, making the code more condense, cleaner, and safer. Especially, framework like [ReactiveCocoa][ReactiveCocoa_link], [PromiseKit][PromiseKit_link], and [RxSwift][RxSwift_link] has became increasingly popular in recent years, and the concept and functional and reactive programming start to pop out in the vision of developers.
 
 ### Asynchronous Monad
 
-[PromiseKit][PromiseKit_link] is a great example of monad of asynchronous programming in Swift. Javascript takes a great benefit from it and it also has a swift version, loved. Definitely take a look if you haven't seen it.
+[PromiseKit][PromiseKit_link] is a great example of monad of asynchronous programming in Swift. Javascript takes a great benefit from it and luckily it also has a Swift implementation, loved. Definitely take a look if you haven't seen it.
 
-If you are a Javascript developer, yes, you are dealing monad everyday.
+That's to say, if you are a Javascript developer, yes, you are dealing monad everyday.
 
-Promise keeps asynchronous calculations and values to an encapsulated box. You can pull the result out when the asynchronous operation once complete.
+Promise keeps asynchronous calculations and data to an encapsulated box. You can pull the result out once the asynchronous operation complete.
 
-Brief example of `Promise<T>` taken from [PromiseKit's intro page](http://promisekit.org/introduction/).
+Here's a simple use of `Promise<T>` taken from [PromiseKit's intro page](http://promisekit.org/introduction/).
 
 ```swift
 login().then {
@@ -66,7 +66,7 @@ login().then {
 }
 ```
 
-Taking a closer look of how the most used core function `then` is defined:
+Taking a closer look of how the most used core function `then` is defined in `Promise<T>`:
 
 ```swift
 class Promise<T> {
@@ -97,9 +97,9 @@ class Observable<T> {
 
 ### Implementing Monad
 
-Sometimes, it is beneficial for us if we implement some useful monad to keep our codes organized and safe.
+Sometimes, it would be beneficial if we implement some simple but useful monad to keep our codes organized and safe.
 
-Bit similar to the `Result` pulled from *Alamofire* network request, which has a success and a failure results, we define a type `Either` can be either success that holds certain value or failure that has certain error infos.
+A bit similar to the `Result<T>` pulled from *Alamofire* network request, which has a success and a failure results, we define a type `Either<T>` can be either success that holds certain value or failure that has somewhat error passed in.
 
 ```swift
 enum Either<Value> {
@@ -148,7 +148,7 @@ func >>=<T, U>(a: Either<T>, transform: T -> Either<U>) -> Either<U> {
 }
 ```
 
-Say we have some functions that results in `Either` of `UIImage` or failure of operation.
+Say we have some functions that results in `Either` of `Success` to get `UIImage` or `Failure`.
 
 ```swift
 func toImage(data: NSData) -> Either<UIImage>
@@ -156,10 +156,11 @@ func addAlpha(image: UIImage) -> Either<UIImage>
 func roundCorner(image: UIImage) -> Either<UIImage>
 func applyBlur(image: UIImage) -> Either<UIImage>
 ```
-Thus, we could transform image data to `UIImage`, add alpha channel, clip round corner, and apply blur effect to it.
+
+Thus, we could transform image data to `UIImage`, add alpha channel, clip round corner, and apply blur effect to it by simply chaining functions together.
 
 ```swift
-let result: Either<UIImage> = toImage(data) >>= addAlpha >>= roundCorner >>= applyBlur
+let result = toImage(data) >>= addAlpha >>= roundCorner >>= applyBlur
 ```
 
 And finally check the resulted image:
