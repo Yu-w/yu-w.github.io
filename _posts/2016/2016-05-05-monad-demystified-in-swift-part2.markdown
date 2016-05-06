@@ -3,7 +3,7 @@ layout: "post"
 title: "Monad Demystified, in Swift: Part II"
 date: "2016-05-05 13:52"
 categories: [Swift]
-tags: [Swift, Haskell, Functional Programming]
+tags: [Functional Programming, Swift]
 ---
 
 Many people ask what actually is functional programming? *Wikipedia* says it is a programming paradigm. So, another question arise: what is a paradigm?
@@ -172,6 +172,19 @@ case Failure(err):
     handleError(err)
 }
 ```
+
+---
+
+#### Reference
+
+> [Wikipedia](https://en.wikipedia.org/wiki/Functional_programming)
+>
+> [Haskell Wiki](https://wiki.haskell.org/Haskell)
+>
+> [https://www.objc.io](https://www.objc.io)
+>
+> [Functional Swift](https://www.objc.io/books/fpinswift/) by Chris Eidhof, Florian Kugler, and Wouter Swierstra
+
 
 
 [RxSwift_link]: https://github.com/ReactiveX/RxSwift
