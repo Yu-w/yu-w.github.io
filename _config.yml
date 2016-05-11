@@ -4,7 +4,7 @@ moto: 'Code & Design'
 description: 'Yu Wang - a full stack developer and UX designer that currently studies abroad in UIUC.'
 url: 'http://yu-w.github.io'
 baseurl: '/'
-# google_analytics: 'UA-XXXXXX-X'
+google_analytics: 'UA-77555247-1'
 disqus_shortname: 'yuw'
 
 author:
